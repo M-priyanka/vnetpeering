@@ -53,7 +53,7 @@
             }
         },
         {
-                "apiVersion": "2016-06-01",
+                "apiVersion": "2018-11-01",
                 "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                 "name": "[parameters('VMSettings').vNet1tovNet2PeeringName]",
                 "location": "[parameters('VMSettings').location]",
@@ -73,7 +73,7 @@
                 }
             },
             {
-                "apiVersion": "2016-06-01",
+                "apiVersion": "2018-11-01",
                 "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                 "name": "[parameters('VMSettings').vNet2tovNet1PeeringName]",
                 "location": "[resourceGroup().location]",
