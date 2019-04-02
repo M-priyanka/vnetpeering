@@ -13,27 +13,6 @@
         {
             "apiVersion": "2017-04-01",
             "type": "Microsoft.Network/virtualNetworks",
-            "name": "[parameters('VMSettings').vnetName]",
-            "location": "[parameters('VMSettings').location]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[parameters('VMSettings').addressPrefix]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[parameters('VMSettings').subnetName]",
-                        "properties": {
-                            "addressPrefix": "[parameters('VMSettings').subnetPrefix]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2017-04-01",
-            "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('VMSettings').vnetName1]",
             "location": "[parameters('VMSettings').location]",
             "properties": {
@@ -51,9 +30,69 @@
                     }
                 ]
             }
-        }
-  
-    ],
+        },
+        {
+            "apiVersion": "2017-04-01",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('VMSettings').vnetName2]",
+            "location": "[parameters('VMSettings').location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('VMSettings').addressPrefix2]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('VMSettings').subnetName2]",
+                        "properties": {
+                            "addressPrefix": "[parameters('VMSettings').subnetPrefix2]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+                "apiVersion": "2016-06-01",
+                "type": "virtualNetworkPeerings",
+                "name": "[parameters('VMSettings').vNet1tovNet2PeeringName]",
+                "location": "[parameters('VMSettings').location]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName1)]",
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName2)]"
+                ],
+                "comments": "This is the peering from vNet 1 to vNet 2",
+                "properties": {
+                    "allowVirtualNetworkAccess": "true",
+                    "allowForwardedTraffic": "false",
+                    "allowGatewayTransit": "false",
+                    "useRemoteGateways": "false",
+                    "remoteVirtualNetwork": {
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks',parameters('VMSettings').vnetName2)]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2016-06-01",
+                "type": "virtualNetworkPeerings",
+                "name": "[parameters('VMSettings').vNet2tovNet1PeeringName]",
+                "location": "[resourceGroup().location]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName1)]",
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName2)]"
+                ],
+                "comments": "This is the peering from vNet 2 to vNet 1",
+                "properties": {
+                    "allowVirtualNetworkAccess": "true",
+                    "allowForwardedTraffic": "false",
+                    "allowGatewayTransit": "false",
+                    "useRemoteGateways": "false",
+                    "remoteVirtualNetwork": {
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks',parameters('VMSettings').vnetName1)]"
+                    }
+                }
+            }
+        ],
     "outputs": {
        
     }
