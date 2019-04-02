@@ -55,7 +55,7 @@
         {
                 "apiVersion": "2018-11-01",
                 "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                "name": "[concat(parameters('VMSettings').vnetName1,'/',parameters('VMSettings').vNet1tovNet2PeeringName]",
+                "name": "[concat(parameters('VMSettings').vnetName1,'/',parameters('VMSettings').vNet1tovNet2PeeringName)]",
                 "location": "[parameters('VMSettings').location]",
                 "dependsOn": [
                     "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName1)]",
@@ -75,7 +75,7 @@
             {
                 "apiVersion": "2018-11-01",
                 "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                "name": "[concat(parameters('VMSettings').vnetName2,'/',parameters('VMSettings').vNet2tovNet1PeeringName]",
+                "name": "[concat(parameters('VMSettings').vnetName2,'/',parameters('VMSettings').vNet2tovNet1PeeringName)]",
                 "location": "[resourceGroup().location]",
                 "dependsOn": [
                     "[concat('Microsoft.Network/virtualNetworks/', parameters('VMSettings').vnetName1)]",
