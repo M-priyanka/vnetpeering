@@ -54,7 +54,7 @@
         },
         {
                 "apiVersion": "2016-06-01",
-                "type": "virtualNetworkPeerings",
+                "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                 "name": "[parameters('VMSettings').vNet1tovNet2PeeringName]",
                 "location": "[parameters('VMSettings').location]",
                 "dependsOn": [
@@ -74,7 +74,7 @@
             },
             {
                 "apiVersion": "2016-06-01",
-                "type": "virtualNetworkPeerings",
+                "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                 "name": "[parameters('VMSettings').vNet2tovNet1PeeringName]",
                 "location": "[resourceGroup().location]",
                 "dependsOn": [
