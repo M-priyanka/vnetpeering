@@ -42,7 +42,7 @@
                         "name": "[concat('to','-','VNetLocal')]",
                         "properties":{
                             "addressPrefix": "[parameters('networkSettings').addressPrefix]",
-                            "nextHopType": "VirtualNetwork"
+                            "nextHopType": "VnetLocal"
                         }
                     }
                 ]
@@ -59,7 +59,7 @@
                         "name": "[concat('to','-','VNetLocal')]",
                         "properties":{
                             "addressPrefix": "[parameters('networkSettings').addressPrefix]",
-                            "nextHopType": "VirtualNetwork"
+                            "nextHopType": "VnetLocal"
                         }
                     },
                     {
@@ -92,7 +92,7 @@
                         "name": "[concat('to','-', 'VNetLocal')]",
                         "properties":{
                             "addressPrefix": "[parameters('wlNetworkSettings').addressPrefix]",
-                            "nextHopType": "VirtualNetwork"
+                            "nextHopType": "VnetLocal"
                         }
                     }
                 ]
